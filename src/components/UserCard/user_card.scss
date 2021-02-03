@@ -1,0 +1,43 @@
+@import '../../styles/variables.scss';
+
+.user_card {
+  width: 216px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 1px solid $bg;
+  }
+
+  &__name {
+    @include heading_2;
+    margin: 12px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    text-align: center
+  }
+
+  &__text {
+    @include paragraph_1;
+    color: #4c4b4b;
+    text-align: center;
+
+    &.position {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;  
+      overflow: hidden;
+    }
+    &.mail {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
