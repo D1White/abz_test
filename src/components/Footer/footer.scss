@@ -1,0 +1,13 @@
+@import '../../styles/variables.scss';
+
+footer {
+  width: 100%;
+  padding: 16px 0 19px 0;
+  @include flex-center;
+  border-top: 1px solid #ececec;
+}
+
+.footer__text {
+  @include paragraph_1;
+  color: #4c4b4b;
+}
