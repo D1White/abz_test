@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+@import '../../styles/variables.scss';
+
+.form {
+  width: 100%;
+  @include flex-center;
+
+  &__container {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 153px 0 163px 0;
+  }
+
+  &__title {
+    @include heading_1-d;
+    margin-bottom: 15px;
+  }
+
+  &__subtitle {
+    @include paragraph_1;
+    color: #4c4b4b;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  &__text {
+    font-family: 'PT Sans', sans-serif;
+    @include paragraph_1;
+    margin-bottom: 8px;
+
+    &-info {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 12px;
+      color: #6c757d;
+      margin: 5px 0 3px 0;
+      letter-spacing: -1px;
+
+      &.error {
+        color: #db3445;
+      }
+    }
+  }
+
+  &__input {
+    width: 467px;
+    padding: 6px 13px;
+    border: solid 1px #ced4da;
+    border-radius: 4px;
+
+    font-family: 'PT Sans', sans-serif;
+    @include paragraph_1;
+
+    &::placeholder {
+      color: #b2b9c0;
+    }
+
+    &:focus {
+      border: solid 1px #80bdff;
+      -webkit-box-shadow: 0px 0px 5px 0px #80bdff; 
+      box-shadow: 0px 0px 5px 0px #80bdff;
+    }
+    
+    &:disabled {
+      background-color: #E9ECEF;
+    }
+
+    &.error {
+      border: solid 1px #db3445;
+
+      &:focus {
+        -webkit-box-shadow: 0px 0px 5px 0px #db3445; 
+        box-shadow: 0px 0px 5px 0px #db3445;
+      }
+    }
+
+  }
+
+  &__file {
+    height: 38px;
+    border: solid 1px #ced4da;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-text {
+      font-family: 'PT Sans', sans-serif;
+      @include paragraph_1;
+      color: #b2b9c0;
+      margin-left: 13px;
+    }
+
+    &-button {
+      font-family: 'PT Sans', sans-serif;
+      @include paragraph_1;
+      color: #212529;
+      height: 100%;
+      padding: 5px 16px;
+      background-color: #f8f7f5;
+      border-left: solid 1px #d4d9de;
+      cursor: pointer;
+      border-radius: 0 4px 4px 0;
+    }
+
+    &>input[type="file"] {
+      display: none;
+    }
+
+    &.error {
+      border: solid 1px #db3445;
+      -webkit-box-shadow: 0px 0px 5px 0px #db3445; 
+      box-shadow: 0px 0px 5px 0px #db3445;
+    }
+  }
+
+  &__btn {
+    padding: 8px 58px;
+    margin-top: 20px;
+    background-color: $primary;
+    border-radius: 4px;
+    font-family: 'Open Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    font-weight: 600;
+    color: $bg;
+
+    max-width: 470px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &:hover {
+      @include hover-btn;
+    }
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio {
+  display: flex;
+  flex-direction: column;
+  margin-top: 23px;
+  margin-bottom: 16px;
+
+  &>p {
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+
+    &>label {
+      font-family: 'PT Sans', sans-serif;
+      @include paragraph_1;
+      margin-left: 11px;
+    }
+  }
+}

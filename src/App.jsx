@@ -1,4 +1,4 @@
-import { Header, Banner, AboutMe, Users } from "./components";
+import { Header, Banner, AboutMe, Users, Form } from "./components";
 
 function App() {
   return (
@@ -8,6 +8,7 @@ function App() {
         <Banner />
         <AboutMe />
         <Users />
+        <Form />
       </main>
     </>
   );
