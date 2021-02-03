@@ -1,0 +1,66 @@
+@import '../../styles/variables.scss';
+
+.about_me {
+  width: 100%;
+  @include flex-center;
+  
+  &__container {
+    @include container;
+    padding: 160px 0 160px 0;
+    @include flex-center;
+    flex-direction: column;
+  }
+
+  &__title {
+    @include heading_1-d;
+    margin-bottom: 68px;
+    margin-top: -8px;
+    margin-left: -2px;
+    letter-spacing: -1px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+
+    &>img {
+      width: 339px;
+      height: 285px;
+      margin-right: 50px;
+      margin-left: 55px;
+    }
+  }
+
+  &__text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 30px;
+
+    &-title {
+      @include heading_2;
+      margin-bottom: 19px;
+    }
+
+    &>span {
+      @include paragraph_1;
+      color: #4c4b4b;
+      margin-bottom: 30px;
+      text-align: justify;
+    }
+
+    &>button {
+      font-family: 'Open Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-size: 16px;
+      font-weight: 600;
+      color: $primary;
+
+      &:hover {
+        @include hover-text-btn;
+      }
+    }
+  }
+}

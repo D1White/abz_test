@@ -16,7 +16,7 @@ function Banner() {
             requirements. We look forward to your submission. Good luck! The
             photo has to scale in the banner area on the different screens
           </span>
-          <button className='banner__btn'>Sing up now</button>
+          <button type='button' className='banner__btn'>Sing up now</button>
         </div>
       </div>
     </div>
