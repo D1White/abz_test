@@ -1,0 +1,47 @@
+@import '../../styles/variables.scss';
+
+header {
+  width: 100%;
+  height: 60px;
+  background-color: $bg;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+}
+
+.header {
+  &__container {
+    @include container;
+    padding: 0 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__nav {
+    &>ul {
+      display: flex;
+      align-items: center;
+
+      &>li {
+        font-size: 14px;
+        cursor: pointer;
+        margin-left: 28.5px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:hover {
+          @include hover-text;
+        }
+      }
+    }
+  }
+}
+
+
+
