@@ -1,10 +1,11 @@
-import { Header, Banner, AboutMe, Users, Form, Footer, Modal } from "./components";
+import { Header, Banner, AboutMe, Users, Form, Footer, Modal, MobileMenu } from "./components";
 
 function App() {
   return (
     <>
       <Header />
-      <Modal />
+      {/* <Modal /> */}
+      <MobileMenu />
       <main>
         <Banner />
         <AboutMe />
