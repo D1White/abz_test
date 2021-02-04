@@ -1,11 +1,22 @@
+import { useState } from 'react'
 import { Header, Banner, AboutMe, Users, Form, Footer, Modal, MobileMenu } from "./components";
 
 function App() {
+
+  const [mobMenuVisible, setMobMenuVisible] = useState(false);
+
+  const visibleMobMenu = () => {
+    setMobMenuVisible(true);
+  }
+  const hideMobMenu = () => {
+    setMobMenuVisible(false);
+  }
+
   return (
     <>
-      <Header />
+      <Header visibleMobMenu={visibleMobMenu} />
       {/* <Modal /> */}
-      <MobileMenu />
+      { mobMenuVisible && <MobileMenu hideMobMenu={hideMobMenu} />}
       <main>
         <Banner />
         <AboutMe />

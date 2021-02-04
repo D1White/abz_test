@@ -11,6 +11,10 @@ body {
   font-weight: 400;
   color: $black;
   background: $bg;
+
+  &.disable-scroll {
+    overflow: hidden;
+  };
 }
 
 #root {

@@ -3,7 +3,7 @@ import './header.scss';
 import logo from '../../assets/logo.svg';
 
 
-function Header() {
+function Header({ visibleMobMenu }) {
   return (
     <header>
       <div className="header__container">
@@ -17,7 +17,7 @@ function Header() {
             <li>Sign Up</li>
           </ul>
         </nav>
-        <button type='button' className='burger-btn'></button>
+        <button type='button' className='burger-btn' onClick={visibleMobMenu}></button>
       </div>
     </header>
   )

@@ -1,11 +1,36 @@
-import React from "react";
+import { useEffect, useRef } from "react";
 import "./mobmenu.scss";
 import logo from "../../assets/logo.svg";
 
-function MobileMenu() {
+function MobileMenu({ hideMobMenu }) {
+  const mobMenuElem = useRef();
+
+
+  useEffect(() => {
+    document.body.addEventListener("click", handleOutsideClick);
+    document.body.classList.add('disable-scroll');
+
+    return () => {
+      document.body.removeEventListener("click", handleOutsideClick);
+      document.body.classList.remove('disable-scroll');
+    };
+  }, []);// eslint-disable-line react-hooks/exhaustive-deps
+
+  const handleOutsideClick = (event) => {
+    const path = event.path || (event.composedPath && event.composedPath());
+    if (!path.includes(mobMenuElem.current)) {
+      mobMenuElem.current.classList.add('hide');
+      mobMenuElem.current.parentElement.classList.add('hide');
+      setTimeout(() => {
+        hideMobMenu();
+      }, 500);
+    }
+  };
+
+
   return (
     <div className='mob-menu__bg'>
-      <div className='mob-menu'>
+      <div className='mob-menu' ref={mobMenuElem}>
         <div className='mob-menu__logo'>
           <img src={logo} alt='Logo' />
         </div>

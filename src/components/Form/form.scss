@@ -121,6 +121,10 @@
       @include paragraph_1;
       color: #b2b9c0;
       margin-left: 13px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      max-width: 357px;
     }
 
     &-button {
