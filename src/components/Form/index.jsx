@@ -4,7 +4,7 @@ import axios from "axios";
 
 import "./form.scss";
 
-function Form() {
+function index() {
   const fileInput = useRef();
 
   const [name, setName] = useState(null);
@@ -29,8 +29,8 @@ function Form() {
   }, []);
 
   useEffect(() => {
-    console.log(position)
-  }, [position])
+    console.log(position);
+  }, [position]);
 
   useEffect(() => {
     if (name) {
@@ -132,88 +132,36 @@ function Form() {
   };
 
   return (
-    <div className='form'>
-      <div className='form__container'>
-        <h1 className='form__title'>Register to get a work</h1>
-        <span className='form__subtitle'>
-          Attention! After successful registration and alert, update the
-          <br />
-          list of users in the block from the top
-        </span>
-        <form>
-          <span className='form__text'>Name</span>
-          <input
-            type='text'
-            placeholder='Your name'
-            className={`form__input ${errors.name ? "error" : ""}`}
-            onChange={(e) => debounced.callback(e.target.value, "name")}
-          />
-          {errors.name && <span className='form__text-info error'>Error</span>}
+    <form>
+      <input
+        type='text'
+        placeholder='Your name'
+        className={`form__input ${errors.name ? 'error' : ''}`}
+        onChange={(e) => {debounced.callback(e.target.value, "name")}}
+      />
+      {errors.name && <span className='form__text-info error'>Error</span>}
 
-          <span className='form__text'>Email</span>
-          <input
-            type='text'
-            placeholder='Your email'
-            className={`form__input ${errors.email ? 'error' : ''}`}
-            onChange={(e) => debounced.callback(e.target.value, "email")}
-          />
-          {errors.email && <span className='form__text-info error'>Error</span>}
+      <input
+        type='text'
+        placeholder='Your email'
+        className={`form__input ${errors.email ? "error" : ""}`}
+        onChange={(e) => debounced.callback(e.target.value, "email")}
+      />
+      {errors.email && <span className='form__text-info error'>Error</span>}
 
-          <span className='form__text'>Phone number</span>
-          <input
-            type='text'
-            placeholder='+380 XX XXX XX XX'
-            className={`form__input ${errors.phone ? "error" : ""}`}
-            onChange={(e) => debounced.callback(e.target.value, "phone")}
-          />
-          <span className={`form__text-info ${errors.phone ? "error" : ""}`}>
-            {errors.phone
-              ? "Error"
-              : "Enter a phone number in international format"}
-          </span>
-
-          <div className='radio'>
-            <span className='form__text'>Select your position</span>
-
-            {positionsArr &&
-              positionsArr.map((obj) => (
-                <p key={`${obj.name}_${obj.id}`}>
-                  <input
-                    type='radio'
-                    name='position'
-                    id={`radio-${obj.id}`}
-                    value={obj.name}
-                    onChange={(e) =>
-                      debounced.callback(e.target.value, "position")
-                    }
-                  />
-                  <label htmlFor={`radio-${obj.id}`}>{obj.name}</label>
-                </p>
-              ))}
-          </div>
-
-          <span className='form__text'>Photo</span>
-          <label className={`form__file ${errors.photo ? "error" : ""}`}>
-            <span className='form__file-text'>
-              {photoName ? photoName : "Upload your photo"}
-            </span>
-            <span className='form__file-button'>Browse</span>
-            <input
-              type='file'
-              accept='.jpg, .jpeg'
-              name='user[image]'
-              ref={fileInput}
-              onChange={photoCheck}
-            />
-          </label>
-          {errors.photo && <span className='form__text-info error'>Error</span>}
-        </form>
-        <button type='submit' className='form__btn' onClick={submit}>
-          Sing up now
-        </button>
-      </div>
-    </div>
+      <input
+        type='text'
+        placeholder='+380 XX XXX XX XX'
+        className={`form__input ${errors.phone ? "error" : ""}`}
+        onChange={(e) => debounced.callback(e.target.value, "phone")}
+      />
+      <span className={`form__text-info ${errors.phone ? "error" : ""}`}>
+        {errors.phone
+          ? "Error"
+          : "Enter a phone number in international format"}
+      </span>
+    </form>
   );
 }
 
-export default Form;
+export default index;
