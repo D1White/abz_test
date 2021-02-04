@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/media_mixin.scss';
 
 .user_card {
   width: 216px;
@@ -39,5 +40,9 @@
       white-space: nowrap;
       text-overflow: ellipsis;
     }
+  }
+
+  @include _480 {
+    margin-bottom: 30px;
   }
 }

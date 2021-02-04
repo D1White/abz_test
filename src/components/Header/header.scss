@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/media_mixin.scss';
 
 header {
   width: 100%;
@@ -9,6 +10,10 @@ header {
   justify-content: center;
   align-items: center;
   position: fixed;
+
+  @include _360 {
+    height: 40px;
+  }
 }
 
 .header {
@@ -19,6 +24,10 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include _360 {
+      padding: 0 15px;
+    }
   }
 
   &__nav {
@@ -39,6 +48,23 @@ header {
           @include hover-text;
         }
       }
+    }
+
+    @include _768 {
+      display: none;
+    }
+  }
+}
+
+.burger {
+  &-btn {
+    width: 20px;
+    height: 15px;
+    background-image: url(../../assets/menu_icon.svg);
+    display: none;
+
+    @include _768 {
+      display: inline-block;
     }
   }
 }

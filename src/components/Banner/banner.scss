@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/media_mixin.scss';
 
 .banner {
   width: 100%;
@@ -7,7 +8,7 @@
 
   &__container {
     @include container;
-    background: url(../../assets/banner-photo.jpg) no-repeat center center;
+    background: url(../../assets/banner-photo.jpg) no-repeat center left;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -15,6 +16,14 @@
     padding: 0 30px;
     display: flex;
     align-items: center;
+
+    @include _768 {
+      background-position: center;
+    }
+    @include _480 {
+      padding: 0 23px;
+      background-position: center;
+    }
   }
 
   &__content {
@@ -24,6 +33,10 @@
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
+
+    @include _480 {
+      align-items: center;
+    }
   }
 
   &__title {
@@ -36,6 +49,17 @@
     overflow: hidden;
     letter-spacing: -0.6px;
     margin-bottom: 23px;
+
+    @include _768 {
+      @include heading_1-t;
+      max-width: 403px;
+    }
+    @include _480 {
+      @include heading_1-m;
+      text-align: center;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
   }
 
   &__text {
@@ -46,6 +70,27 @@
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;  
     overflow: hidden;
+
+    &>br {
+      display: none;
+
+      @include _480 {
+        display: block;
+      }
+    }
+
+    @include _768 {
+      max-width: 449px;
+      -webkit-line-clamp: 6;
+      margin-bottom: 33px;
+    }
+    @include _480 {
+      max-width: 327px;
+      -webkit-line-clamp: 3;
+      margin-bottom: 33px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
   }
 
   &__btn {
@@ -67,5 +112,12 @@
     &:hover {
       @include hover-btn;
     }
+  }
+
+  @include _768 {
+    height: 500px;
+  }
+  @include _480 {
+    height: 400px;
   }
 }

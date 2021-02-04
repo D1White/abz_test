@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/media_mixin.scss';
 
 .users {
   width: 100%;
@@ -11,17 +12,38 @@
     align-items: center;
     padding: 147px 72px 157px 72px;
     background-color: $bg2;
+
+    @include _768 {
+      padding: 113px 30px 119px 30px;
+    }
+    @include _480 {
+      padding: 75px 17px 79px 17px;
+    }
   }
 
   &__title {
     @include heading_1-d;
     margin-bottom: 16px;
+
+    @include _768 {
+      @include heading_1-t;
+      margin-bottom: 18px;
+    }
+    @include _480 {
+      @include heading_1-m;
+      margin-bottom: 9px;
+    }
   }
 
   &__text {
     @include paragraph_1;
     margin-bottom: 78px;
     color: #4c4b4b;
+
+    @include _480 {
+      margin-bottom: 37px;
+      text-align: center;
+    }
   }
 
   &__cards {
@@ -29,6 +51,19 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 51px;
+
+    &:nth-child(2n) {
+      @include _480 {
+        display: none;
+      }
+    }
+    
+    @include _480 {
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 0;
+    }
+
   }
 
   &__btn {
@@ -50,6 +85,10 @@
 
     &:hover {
       @include hover-btn;
+    }
+
+    @include _480 {
+      margin-top: 0;
     }
   }
 }

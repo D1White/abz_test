@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/media_mixin.scss';
 
 footer {
   width: 100%;
@@ -10,4 +11,11 @@ footer {
 .footer__text {
   @include paragraph_1;
   color: #4c4b4b;
+
+  @include _768 {
+    margin-left: 8px;
+  }
+  @include _480 {
+    margin-left: 0;
+  }
 }

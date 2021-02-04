@@ -15,12 +15,8 @@ function Header() {
             <li>Users</li>
             <li>Sign Up</li>
           </ul>
-          {/* <button>About me</button>
-          <button>Relationships</button>
-          <button>Requirements</button>
-          <button>Users</button>
-          <button>Sign Up</button> */}
         </nav>
+        <button type='button' className='burger-btn'></button>
       </div>
     </header>
   )

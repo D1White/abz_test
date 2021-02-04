@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/media_mixin.scss';
 
 .about_me {
   width: 100%;
@@ -9,6 +10,13 @@
     padding: 160px 0 160px 0;
     @include flex-center;
     flex-direction: column;
+
+    @include _768 {
+      padding: 121px 0 115px 0;
+    }
+    @include _480 {
+      padding: 83px 0 76px 0;
+    }
   }
 
   &__title {
@@ -17,17 +25,50 @@
     margin-top: -8px;
     margin-left: -2px;
     letter-spacing: -1px;
+
+    @include _768 {
+      @include heading_1-t;
+      margin-left: 4px;
+      letter-spacing: -0.5px;
+    }
+    @include _480 {
+      @include heading_1-m;
+      margin-left: 2px;
+      margin-bottom: 30px;
+    }
   }
 
   &__content {
     display: flex;
     align-items: center;
 
+    @include _768 {
+      align-items: flex-start;
+    }
+
+    @include _480 {
+      flex-direction: column;
+    }
+
     &>img {
       width: 339px;
       height: 285px;
       margin-right: 50px;
       margin-left: 55px;
+
+      @include _768 {
+        width: 247px;
+        height: 207px;
+        margin-right: 31px;
+        margin-left: 31px;
+        margin-top: 4px;
+      }
+      @include _480 {
+        width: 289px;
+        height: 243px;
+        margin-left: 35px;
+        margin-bottom: 35px;
+      }
     }
   }
 
@@ -61,6 +102,11 @@
       &:hover {
         @include hover-text-btn;
       }
+    }
+
+    @include _480 {
+      align-items: center;
+      padding: 0 15px;
     }
   }
 }
