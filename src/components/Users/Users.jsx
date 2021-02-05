@@ -26,6 +26,7 @@ function Users({ modalVisible }) {
     if (modalVisible) {
       setUsers([]);
       setPage(1);
+      setBtnDisabled(false);
     }
   }, [modalVisible])
 
