@@ -4,16 +4,14 @@ import axios from "axios";
 import "./users.scss";
 import { UserCard } from "../index";
 
-function Users() {
+function Users({ modalVisible }) {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
   const [btnDisabled, setBtnDisabled] = useState(false);
 
   useEffect(() => {
     axios
-      .get(
-        `https://frontend-test-assignment-api.abz.agency/api/v1/users?page=${page}&count=6`
-      )
+      .get(`https://frontend-test-assignment-api.abz.agency/api/v1/users?page=${page}&count=6`)
       .then((data) => {
         let usersArr = data.data.users;
         setUsers([...users, usersArr.slice(0, 3), usersArr.slice(3, 6)]);
@@ -23,6 +21,13 @@ function Users() {
         }
       });
   }, [page]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (modalVisible) {
+      setUsers([]);
+      setPage(1);
+    }
+  }, [modalVisible])
 
   const showMore = () => {
     setPage(page + 1);

@@ -40,7 +40,7 @@ function App() {
         <main>
           <Banner />
           <AboutMe />
-          <Users />
+          <Users modalVisible={modalVisible} />
           <div className='form-ref' ref={formBlock}>
             <Form visibleModal={visibleModal} />
           </div>

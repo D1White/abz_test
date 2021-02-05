@@ -17,7 +17,7 @@ function Header({ visibleMobMenu }) {
   return (
     <header>
       <div className="header__container">
-        <img src={logo} alt="Logo"/>
+        <button type='button'><img src={logo} alt="Logo"/></button>
         <nav className='header__nav'>
           <ul>
             <li onClick={navClick}>About me</li>

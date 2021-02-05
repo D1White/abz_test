@@ -134,13 +134,12 @@ function Form({ visibleModal }) {
                 visibleModal();
               })
               .catch((err) => {
-                alert('Something went wrong please try again later')
+                alert('Something went wrong please try again later');
               });
           });
       }
     } else {
-      // alert("⚠ Fill in all the fields!");
-      visibleModal();
+      alert("⚠ Fill in all the fields!");
     }
   };
 
@@ -237,7 +236,7 @@ function Form({ visibleModal }) {
             Error
           </span>
         </form>
-        
+
         <button type='submit' className='form__btn' onClick={submit}>
           Sing up now
         </button>
