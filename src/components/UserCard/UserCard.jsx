@@ -1,11 +1,11 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, memo } from "react";
 import { Tooltip } from "react-tippy";
 
 import "./user_card.scss";
 import "react-tippy/dist/tippy.css";
 import photo_cover from "../../assets/photo-cover.svg";
 
-function UserCard({ photo, name, email, phone, position }) {
+const UserCard = memo(({ photo, name, email, phone, position }) => {
   const cardElem = useRef();
   const emailElem = useRef();
 
@@ -52,6 +52,6 @@ function UserCard({ photo, name, email, phone, position }) {
       <span className='user_card__text'>{phone}</span>
     </div>
   );
-}
+});
 
 export default UserCard;

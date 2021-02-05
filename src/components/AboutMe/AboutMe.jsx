@@ -1,8 +1,17 @@
 import React from "react";
 import "./about_me.scss";
 import man_laptop from "../../assets/man-laptop-v1.svg";
+import { FormContext } from '../../utils/Context'
 
 function AboutMe() {
+  const formElem = React.useContext(FormContext);
+
+  const btnClick = () => {
+    if (formElem.current) {
+      formElem.current.scrollIntoView({block: "start", behavior: "smooth"});
+    }
+  }
+
   return (
     <div className='about_me'>
       <div className='about_me__container'>
@@ -24,7 +33,9 @@ function AboutMe() {
               get bonus points as well. Slice service directory page P​SD
               mockup​ into HTML5/CSS3.
             </span>
-            <button type='button'>Sing up now</button>
+            <button type='button' onClick={btnClick}>
+              Sing up now
+            </button>
           </div>
         </div>
       </div>

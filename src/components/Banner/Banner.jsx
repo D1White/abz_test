@@ -1,7 +1,17 @@
 import React from "react";
+
+import { FormContext } from '../../utils/Context'
 import "./banner.scss";
 
 function Banner() {
+  const formElem = React.useContext(FormContext);
+
+  const btnClick = () => {
+    if (formElem.current) {
+      formElem.current.scrollIntoView({block: "start", behavior: "smooth"});
+    }
+  }
+
   return (
     <div className='banner'>
       <div className='banner__container'>
@@ -16,7 +26,7 @@ function Banner() {
             requirements. We look forward to your submission. Good luck! The
             photo has to scale in the banner area on the different screens
           </span>
-          <button type='button' className='banner__btn'>Sing up now</button>
+          <button type='button' className='banner__btn' onClick={btnClick} >Sing up now</button>
         </div>
       </div>
     </div>

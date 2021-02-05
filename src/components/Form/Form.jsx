@@ -4,7 +4,7 @@ import axios from "axios";
 
 import "./form.scss";
 
-function Form() {
+function Form({ visibleModal }) {
   const fileInput = useRef();
 
   const [name, setName] = useState(null);
@@ -102,10 +102,7 @@ function Form() {
   );
 
   const photoCheck = () => {
-    if (
-      fileInput.current.files[0] &&
-      fileInput.current.files[0].size < 5242880
-    ) {
+    if (fileInput.current.files[0] && fileInput.current.files[0].size < 5242880) {
       setPhotoName(fileInput.current.files[0].name);
       console.log(fileInput.current.files[0]);
     }
@@ -134,7 +131,7 @@ function Form() {
 
             axios.post("https://frontend-test-assignment-api.abz.agency/api/v1/users", formData, config)
               .then((res) => {
-                console.log(res);
+                visibleModal();
               })
               .catch((err) => {
                 alert('Something went wrong please try again later')
@@ -142,7 +139,8 @@ function Form() {
           });
       }
     } else {
-      alert("⚠ Fill in all the fields!");
+      // alert("⚠ Fill in all the fields!");
+      visibleModal();
     }
   };
 
