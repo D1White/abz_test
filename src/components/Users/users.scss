@@ -87,6 +87,12 @@
       @include hover-btn;
     }
 
+    &:disabled, &[disabled] {
+      background-color: #D7D7D7;
+      color: #979696;
+      cursor: default;
+    }
+
     @include _480 {
       margin-top: 0;
     }

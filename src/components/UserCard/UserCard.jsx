@@ -10,17 +10,24 @@ function UserCard({ photo, name, email, phone, position }) {
   const emailElem = useRef();
 
   const [overflow, setOverflow] = useState(false);
+  const [validPhoto, setValidPhoto] = useState(false);
 
   useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      setValidPhoto(true);
+    }
+    img.src = photo;
+
     if (emailElem.current.offsetWidth > 216) {
       setOverflow(true);
     }
-  }, []);
+  }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className='user_card' ref={cardElem}>
       <img
-        src={photo ? photo : photo_cover}
+        src={validPhoto ? photo : photo_cover}
         alt='User avatar'
         className='user_card__img'
       />

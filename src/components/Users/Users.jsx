@@ -7,6 +7,7 @@ import { UserCard } from "../index";
 function Users() {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
+  const [btnDisabled, setBtnDisabled] = useState(false);
 
   useEffect(() => {
     axios
@@ -15,19 +16,16 @@ function Users() {
       )
       .then((data) => {
         let usersArr = data.data.users;
-        // console.log(usersArr);
-        // console.log(usersArr.slice(0, 3), usersArr.slice(3, 6));
         setUsers([...users, usersArr.slice(0, 3), usersArr.slice(3, 6)]);
-        // setUsers([ ...users, data.data.users]);
+
+        if (!data.data.links.next_url) {
+          setBtnDisabled(true);
+        }
       });
   }, [page]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  useEffect(() => {
-    console.log(users);
-  }, [users]);
-
   const showMore = () => {
-    setPage(page + 2);
+    setPage(page + 1);
   }
 
   return (
@@ -53,7 +51,7 @@ function Users() {
               ))} 
             </div>
           ))}
-        <button type='button' className='users__btn' onClick={showMore} >
+        <button type='button' className='users__btn' onClick={showMore} disabled={btnDisabled} >
           Show more
         </button>
       </div>

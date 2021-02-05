@@ -91,7 +91,7 @@ function Form() {
           setPhone(value);
           break;
         case "position":
-          setPosition(value);
+          setPosition(parseInt(value));
           break;
         default:
           break;
@@ -112,20 +112,40 @@ function Form() {
   };
 
   const submit = () => {
-    if (name && email && phone && position) {
+    if (name && email && phone && position && fileInput.current.files[0]) {
       if (!errors.name && !errors.email && !errors.phone && !errors.photo) {
-        console.log({
-          name: name,
-          email: email,
-          phone: phone,
-          position: position,
-          photo: fileInput.current.files[0],
-        });
+
+        axios.get("https://frontend-test-assignment-api.abz.agency/api/v1/token").then((tokenData) => {
+            const token = tokenData.data.token;
+
+            let formData = new FormData();
+            formData.append('position_id', position);
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('phone', phone);
+            formData.append('photo', fileInput.current.files[0]);
+
+            const config = {     
+              headers: {
+                'content-type': 'multipart/form-data',
+                Token: token
+              }
+            }
+
+            axios.post("https://frontend-test-assignment-api.abz.agency/api/v1/users", formData, config)
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((err) => {
+                alert('Something went wrong please try again later')
+              });
+          });
       }
     } else {
       alert("⚠ Fill in all the fields!");
     }
   };
+
 
   return (
     <div className='form'>
@@ -150,7 +170,7 @@ function Form() {
           <input
             type='text'
             placeholder='Your email'
-            className={`form__input ${errors.email ? 'error' : ''}`}
+            className={`form__input ${errors.email ? "error" : ""}`}
             onChange={(e) => debounced.callback(e.target.value, "email")}
           />
           {errors.email && <span className='form__text-info error'>Error</span>}
@@ -178,7 +198,7 @@ function Form() {
                     type='radio'
                     name='position'
                     id={`radio-${obj.id}`}
-                    value={obj.name}
+                    value={obj.id}
                     onChange={(e) =>
                       debounced.callback(e.target.value, "position")
                     }
