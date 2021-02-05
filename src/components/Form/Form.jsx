@@ -162,7 +162,12 @@ function Form({ visibleModal }) {
             className={`form__input ${errors.name ? "error" : ""}`}
             onChange={(e) => debounced.callback(e.target.value, "name")}
           />
-          {errors.name && <span className='form__text-info error'>Error</span>}
+          <span
+            className='form__text-info error'
+            style={{visibility: `${errors.name ? 'visible' : 'hidden'}`}}
+          >
+            Error
+          </span>
 
           <span className='form__text'>Email</span>
           <input
@@ -171,7 +176,12 @@ function Form({ visibleModal }) {
             className={`form__input ${errors.email ? "error" : ""}`}
             onChange={(e) => debounced.callback(e.target.value, "email")}
           />
-          {errors.email && <span className='form__text-info error'>Error</span>}
+          <span
+            className='form__text-info error'
+            style={{visibility: `${errors.email ? 'visible' : 'hidden'}`}}
+          >
+            Error
+          </span>
 
           <span className='form__text'>Phone number</span>
           <input
@@ -220,8 +230,14 @@ function Form({ visibleModal }) {
               onChange={photoCheck}
             />
           </label>
-          {errors.photo && <span className='form__text-info error'>Error</span>}
+          <span
+            className='form__text-info error'
+            style={{visibility: `${errors.photo ? 'visible' : 'hidden'}`}}
+          >
+            Error
+          </span>
         </form>
+        
         <button type='submit' className='form__btn' onClick={submit}>
           Sing up now
         </button>
